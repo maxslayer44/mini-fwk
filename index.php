@@ -19,7 +19,7 @@ ob_start();
 //--------------------------------------------------------------------------
 
 //moteur de template
-require_once('lib/Smarty-3.1.1/libs/Smarty.class.php');
+require_once('lib/smarty-3.1.27/libs/Smarty.class.php');
 $tpl = new Smarty();
 $tpl->template_dir = 'templates/';
 $tpl->compile_dir = 'lib/tpl/templates_c/';
