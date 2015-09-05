@@ -19,19 +19,19 @@ ob_start();
 //--------------------------------------------------------------------------
 
 //moteur de template
-require_once('lib/smarty-3.1.27/libs/Smarty.class.php');
-$tpl = new Smarty();
-$tpl->template_dir = 'templates/';
-$tpl->compile_dir = 'lib/tpl/templates_c/';
-$tpl->config_dir = 'lib/tpl/configs/';
-$tpl->cache_dir = 'lib/tpl/cache/';
+require_once('../lib/smarty-3.1.27/libs/Smarty.class.php');
+$tpl = new \Smarty();
+$tpl->template_dir = '../templates/';
+$tpl->compile_dir = '../lib/tpl/templates_c/';
+$tpl->config_dir = '../lib/tpl/configs/';
+$tpl->cache_dir = '../lib/tpl/cache/';
 
 
 //--------------------------------------------------------------------------
 //paramètres et chargeur de classes
 //--------------------------------------------------------------------------
-require_once("conf/Params.ini.php");
-require_once("lib/Autoload.php");
+require_once("../conf/Params.ini.php");
+require_once("../lib/Autoload.php");
 
 
 
@@ -60,7 +60,7 @@ $config=array('db'=>$db,'tpl'=>$tpl,'session'=>$session,'req'=>$request,'requete
 //--------------------------------------------------------------------------
 //Chargement du menu
 //--------------------------------------------------------------------------
-include ("conf/Menus.ini.php");
+include("../conf/Menus.ini.php");
 $tpl->assign("menus",$menus);
 
 
@@ -74,12 +74,12 @@ $moteur->load_content($tpl);
 //Chargement de blocs d'affichage
 //--------------------------------------------------------------------------
 
-include ("conf/Blocs.ini.php");
+include("../conf/Blocs.ini.php");
 foreach ($blocs as $b){
 	$bl = new $b();
 	$bl->set_variables($config);
 	$bl->display();
-	$res=$tpl->fetch("file:blocs/$b.bloc.tpl");
+	$res=$tpl->fetch("file:../blocs/$b.bloc.tpl");
 	$tpl->assign("Bloc_$b",$res);
 }
 
